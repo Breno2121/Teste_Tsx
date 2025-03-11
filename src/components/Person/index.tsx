@@ -12,4 +12,5 @@ export default function Person({ nome, idade }: PersonProps) {
           <span>Idade: {idade}</span>
         </div>
     )
+    
 }
