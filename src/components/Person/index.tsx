@@ -1,25 +1,15 @@
-import "./Style.css"
-
-export default function Person() {
-
+import "./styles.css";
 
 type PersonProps = {
-    nome: string;
-    idade: number;
+  nome: string;
+  idade: number;
 }
 
-
-
-
-
-
-
-
-
+export default function Person({ nome, idade }: PersonProps) {
     return (
         <div className="item">
-            <strong>Nome: Maria</strong>
-
+          <strong>Nome: {nome}</strong>
+          <span>Idade: {idade}</span>
         </div>
     )
 }

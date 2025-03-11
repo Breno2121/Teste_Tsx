@@ -1,11 +1,11 @@
-import Link from "next/link"
+import Link from "next/link";
 
-export default function login() {
+export default function Login() {
     return (
         <div>
-            <h1>Login</h1>
+            <h1>LOGIN</h1>
             <Link href="/">
-                <button>Pagina inicial</button>
+                <button>HOME</button>
             </Link>
         </div>
     )
