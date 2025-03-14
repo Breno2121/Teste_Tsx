@@ -1,9 +1,8 @@
 'use client'
 
 import { useState } from "react";
-import "./home.css";
+import "./home.css"
 import Link from "next/link";
-
 
 export default function Home() {
   // let contador = 0;
@@ -32,7 +31,7 @@ export default function Home() {
 
   return (
 
-    <div>
+    <div className="home-container">
       <h1>Contador: {contador}</h1>
       <button onClick={() => incrementar()}>INCREMENTAR</button>
       <button onClick={() => decrementar()}>DECREMENTAR</button>

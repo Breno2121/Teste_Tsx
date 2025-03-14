@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header{
+    background-color: #202024;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 16px;
+    padding: 20px 0;
+}
+
+.header h1 {
+    color: #ffffff;
+    font-size: 40px;
+}
+
+.header img {
+    height: 36px;
+}
