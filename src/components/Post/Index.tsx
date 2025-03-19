@@ -1,5 +1,12 @@
+'use client'
+
+import { FormEvent, useState } from "react";
 import Avatar from "../Avatar";
 import "./Style.css";
+import { format, formatDistanceToNow } from "date-fns";
+import { ptBR } from "date-fns/locale";
+
+
 
 type Author = {
     name: string;
@@ -10,43 +17,53 @@ type Author = {
 type PostProps = {
     post: {
         author: Author;
-        publisheAt: Date;
+        publishedAt: Date;
         content: string;
     }
 
 }
 
 export default function Post({ post }: PostProps) {
+    const [newComment, setNewComment] = useState<string>('');
+
+    function handleCreateNewComment(event: FormEvent) {
+        event.preventDefault();
+        alert(newComment)
+    }
+
+    const dateformat = formatDistanceToNow(post.publishedAt, { 
+        locale: ptBR,
+        addSuffix: true})
+
+
     return (
         <article className="post">
             <header>
                 <div className="author">
-                    <Avatar src={"https://github.com/breno2121.png"} hasBorder />
+                    <Avatar src={post.author.avatarUrl} hasBorder />
                     <div className="author-info">
-                        <strong>Breno Silva</strong>
-                        <span>Desenvolvedor</span>
+                        <strong>{post.author.name}</strong>
+                        <span>{post.author.role}</span>
                     </div>
                 </div>
                 <time>
-                    Publicado ha 2 semanas uteis
+                    {dateformat}
                 </time>
             </header>
             <div className="content">
-                <p>Hello Word
-                    O serviço do Google, oferecido sem custo financeiro, traduz instantaneamente palavras, frases e páginas da Web do português para mais de cem outros idiomas.
-                    O serviço do Google, oferecido sem custo financeiro, traduz instantaneamente palavras, frases e páginas da Web do português para mais de cem outros idiomas.
-                    O serviço do Google, oferecido sem custo financeiro, traduz instantaneamente palavras, frases e páginas da Web do português para mais de cem outros idiomas.
-                    O serviço do Google, oferecido sem custo financeiro, traduz instantaneamente palavras, frases e páginas da Web do português para mais de cem outros idiomas.
-                    O serviço do Google, oferecido sem custo financeiro, traduz instantaneamente palavras, frases e páginas da Web do português para mais de cem outros idiomas.
-                    O serviço do Google, oferecido sem custo financeiro, traduz instantaneamente palavras, frases e páginas da Web do português para mais de cem outros idiomas.
-                    O serviço do Google, oferecido sem custo financeiro, traduz instantaneamente palavras, frases e páginas da Web do português para mais de cem outros idiomas.
+                <p>
+                    {post.content}
                 </p>
             </div>
-            <form className="form">
+            <form className="form" onSubmit={handleCreateNewComment}>
                 <strong>Deixe um comentario</strong>
-                <textarea placeholder="Deixe um comentario" />
+                <textarea
+                 placeholder="Deixe um comentario"
+                 value={newComment}
+                 onChange={(e) => setNewComment(e.target.value)}
+                  />
                 <footer>
-                    <button className="button-public">
+                    <button className="button-public" disabled={false}>
                         Publicar
                     </button>
                 </footer>

@@ -14,11 +14,6 @@
     height: fit-content;
 }
 
-.main {
-    height: 600px;
-    background-color: aqua;
-}
-
 .cover {
     border-radius: 8px;
     width: 256px;
@@ -37,20 +32,16 @@
     line-height: 1.6;
 }
 .button-edit{
-    background-color: transparent;
-    color: #008750;
-    border-color: #008750;
-    border-top: 1px solid #00875f;
-    margin: 18px;
-    padding: 24px 32px;
-    width: 100%;
-    max-height: 26px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 16px 24px;
+    margin-top: 16px;
+    border-radius: 8px;
+    border: none;
+    background-color: #00805f;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
 }
 .button-edit:hover{
-    border-color: #00875f;
     background-color: #008750;
     color: black;
 }
