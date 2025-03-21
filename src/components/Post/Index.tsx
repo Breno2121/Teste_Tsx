@@ -5,36 +5,50 @@ import Avatar from "../Avatar";
 import "./Style.css";
 import { format, formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
-
-
+import axios from "axios";
 
 type Author = {
     name: string;
     role: string;
     avatarUrl: string;
 }
-
 type PostProps = {
     post: {
+        id: number;
         author: Author;
         publishedAt: Date;
         content: string;
     }
-
 }
 
 export default function Post({ post }: PostProps) {
     const [newComment, setNewComment] = useState<string>('');
 
-    function handleCreateNewComment(event: FormEvent) {
+    async function handleCreateNewComment(event: FormEvent) {
         event.preventDefault();
         alert(newComment)
+
+        const comment = {
+            comment: newComment,
+            publishedAt: new Date().toISOString(),
+            author: {
+                name: "Breninho",
+                role: "Desocupado",
+                avatarUrl: "http://github.com/breno2121.png"
+            }
+        }
+
+        await axios.patch(`http://localhost:3001/posts${post.id}`, {
+            comments: comment
+        })
+
+
     }
 
-    const dateformat = formatDistanceToNow(post.publishedAt, { 
+    const dateformat = formatDistanceToNow(post.publishedAt, {
         locale: ptBR,
-        addSuffix: true})
-
+        addSuffix: true
+    })
 
     return (
         <article className="post">
@@ -58,10 +72,10 @@ export default function Post({ post }: PostProps) {
             <form className="form" onSubmit={handleCreateNewComment}>
                 <strong>Deixe um comentario</strong>
                 <textarea
-                 placeholder="Deixe um comentario"
-                 value={newComment}
-                 onChange={(e) => setNewComment(e.target.value)}
-                  />
+                    placeholder="Deixe um comentario"
+                    value={newComment}
+                    onChange={(e) => setNewComment(e.target.value)}
+                />
                 <footer>
                     <button className="button-public" disabled={false}>
                         Publicar

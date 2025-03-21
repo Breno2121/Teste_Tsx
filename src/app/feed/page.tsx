@@ -9,6 +9,8 @@ import { PiPencilLine } from "react-icons/pi";
 import Post from "@/components/Post/Index";
 import { FormEvent, useEffect, useState } from "react";
 import axios from "axios";
+import TextAreaCustom from "@/components/TextAreaCustom";
+import ButtonCustom from "@/components/ButtonCustom";
 
 type Post = {
     id: number;
@@ -27,10 +29,20 @@ export default function Feed() {
 
     async function loadPost() {
         const response = await axios.get("http://localhost:3001/posts");
+        
+        // , {
+        //     params: {
+        //         _sort: "publishedAt",
+        //         _order: "desc"
+        //     }
+        // });
+        //setPosts(response.data)
 
-        const postSort = response.data.sort{(a: any, b: any) => new Date(a.publisheAt as any) - new Date(b.publisheAt as any)}
+        const postSort = response.data.sort((a: any, b: any) => (
+            new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+        ))
 
-        setPosts(response.data)
+        setPosts(postSort)
     }
 
     async function handleCreatePost(event: FormEvent) {
@@ -40,10 +52,11 @@ export default function Feed() {
             id: posts.length + 1,
             content: content,
             publishedAt: new Date().toISOString(),
-            author: {name: "Breno Silva",
-            role: "desenvolvedor Java",
-            avatarUrl: "https://github.com/breno2121.png"
-        }
+            author: {
+                name: "Breno Silva",
+                role: "Front-end",
+                avatarUrl: "https://github.com/breno2121.png"
+            }
         }
 
         await axios.post("http://localhost:3001/posts", post)
@@ -68,12 +81,13 @@ export default function Feed() {
                     </div>
                 </aside>
                 <main className="main">
-                    <form onSubmit={handleCreatePost}>
-                        <textarea placeholder="O que voce esta pensando?"
-                            value={content}
-                            onChange={(e) => setContent(e.target.value)}
+                    <form onSubmit={handleCreatePost} className="post">
+                        <TextAreaCustom 
+                        message={content} 
+                        setMessage={setContent} 
+                        title="Deixe um comentario"
                         />
-                        <button type="submit"> Publicar</button>
+                        <ButtonCustom />
                     </form>
                     {posts.map(item => (
                         <Post post={item} key={item.id} />

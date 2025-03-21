@@ -1,7 +1,7 @@
 {
   "posts": [
     {
-      "id": 1,
+      "id": "1",
       "author": {
         "name": "Alice Silva",
         "role": "Desenvolvedora Front-end",
@@ -10,9 +10,8 @@
       "publishedAt": "2025-03-18T12:00:00Z",
       "content": "Hoje compartilhei algumas dicas sobre React no meu blog! Falei sobre como utilizar hooks personalizados para gerenciar estado de forma eficiente e evitar repetições de código. Também mencionei a importância da organização dos componentes e como utilizar o Context API para melhorar a comunicação entre eles. Confira o post completo no meu site!"
     },
-    
     {
-      "id": 2,
+      "id": "2",
       "author": {
         "name": "Mariana Oliveira",
         "role": "UX Designer",
@@ -22,7 +21,7 @@
       "content": "Design de interfaces pensando na acessibilidade é essencial! Recentemente, realizei uma pesquisa sobre como melhorar a experiência de navegação para pessoas com deficiência visual e auditiva. Implementamos melhorias como contraste adequado, suporte a leitores de tela e navegação por teclado. Pequenas mudanças podem fazer uma grande diferença na inclusão digital!"
     },
     {
-      "id": 3,
+      "id": "3",
       "author": {
         "name": "Jose Breno",
         "role": "Desenvolvedor Java",
