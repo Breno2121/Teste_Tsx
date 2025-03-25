@@ -7,6 +7,7 @@ import { format, formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import axios from "axios";
 import TextAreaCustom from "../TextAreaCustom";
+import ButtonCustom from "../ButtonCustom";
 
 type Author = {
     name: string;
@@ -37,9 +38,11 @@ export default function Post({ post, setPost }: PostProps) {
 
     async function loadPost() {
         const response = await axios.get(`http://localhost:3001/posts/${post.id}`);
+
+        //ATUALIZA POSICAO ESPECIFICA DE ESTADO
         setPost((prev: Post[]) =>
             prev.map(atual => (
-                atual.id == post.id ? response.data : atual
+                atual.id === post.id ? response.data : atual
             ))
         )
     }
@@ -63,8 +66,8 @@ export default function Post({ post, setPost }: PostProps) {
             "comments": comments
         })
 
-        setNewComment('');
         loadPost();
+        setNewComment('');
 
     }
 
@@ -100,14 +103,12 @@ export default function Post({ post, setPost }: PostProps) {
                     title="Deixe um comentario"
                 />
                 <footer>
-                    <button className="button-public" disabled={false}>
-                        Publicar
-                    </button>
+                    <ButtonCustom />
                 </footer>
             </form>
 
             {post.comments?.length && post.comments.map(comment => (
-                <h1 key={comment.comment}> {comment.comment} </h1>
+                // <comment key/>
             ))}
 
         </article>

@@ -51,7 +51,7 @@ export default function Feed() {
         event.preventDefault()
 
         const post = {
-            id: posts.length + 1,
+            id: String(posts.length + 1),
             content: content,
             publishedAt: new Date().toISOString(),
             author: {
