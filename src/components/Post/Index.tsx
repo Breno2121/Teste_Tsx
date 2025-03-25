@@ -1,32 +1,51 @@
 'use client'
 
-import { FormEvent, useState } from "react";
+import { Dispatch, DispatchWithoutAction, FormEvent, SetStateAction, useState } from "react";
 import Avatar from "../Avatar";
 import "./Style.css";
 import { format, formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import axios from "axios";
+import TextAreaCustom from "../TextAreaCustom";
 
 type Author = {
     name: string;
     role: string;
     avatarUrl: string;
 }
-type PostProps = {
-    post: {
-        id: number;
-        author: Author;
-        publishedAt: Date;
-        content: string;
-    }
+type Post = {
+    id: string;
+    author: Author;
+    publishedAt: Date;
+    content: string;
+    comments: Comment[];
+}
+type Comment = {
+    id: string;
+    author: Author;
+    comment: string;
+    publisheAt: Date;
 }
 
-export default function Post({ post }: PostProps) {
+type PostProps = {
+    setPost: Dispatch<SetStateAction<Post[]>>,
+    post: Post;
+}
+
+export default function Post({ post, setPost }: PostProps) {
     const [newComment, setNewComment] = useState<string>('');
+
+    async function loadPost() {
+        const response = await axios.get(`http://localhost:3001/posts/${post.id}`);
+        setPost((prev: Post[]) =>
+            prev.map(atual => (
+                atual.id == post.id ? response.data : atual
+            ))
+        )
+    }
 
     async function handleCreateNewComment(event: FormEvent) {
         event.preventDefault();
-        alert(newComment)
 
         const comment = {
             comment: newComment,
@@ -38,10 +57,14 @@ export default function Post({ post }: PostProps) {
             }
         }
 
+        const comments = post.comments?.length ? [...post.comments, comment] : [comment]
+
         await axios.patch(`http://localhost:3001/posts${post.id}`, {
-            comments: comment
+            "comments": comments
         })
 
+        setNewComment('');
+        loadPost();
 
     }
 
@@ -71,10 +94,10 @@ export default function Post({ post }: PostProps) {
             </div>
             <form className="form" onSubmit={handleCreateNewComment}>
                 <strong>Deixe um comentario</strong>
-                <textarea
-                    placeholder="Deixe um comentario"
-                    value={newComment}
-                    onChange={(e) => setNewComment(e.target.value)}
+                <TextAreaCustom
+                    message={newComment}
+                    setMessage={setNewComment}
+                    title="Deixe um comentario"
                 />
                 <footer>
                     <button className="button-public" disabled={false}>
@@ -82,6 +105,11 @@ export default function Post({ post }: PostProps) {
                     </button>
                 </footer>
             </form>
+
+            {post.comments?.length && post.comments.map(comment => (
+                <h1 key={comment.comment}> {comment.comment} </h1>
+            ))}
+
         </article>
 
     )

@@ -13,14 +13,26 @@ import TextAreaCustom from "@/components/TextAreaCustom";
 import ButtonCustom from "@/components/ButtonCustom";
 
 type Post = {
-    id: number;
-    author: string;
+    id: string;
+    author: Author;
     publishedAt: Date;
     content: string;
+    comments: Comment[];
+}
+type Author = {
+    name: string;
+    role: string;
+    avatarUrl: string;
+}
+type Comment = {
+    id: string;
+    author: Author;
+    comment: string;
+    publisheAt: Date;
 }
 
 export default function Feed() {
-    const [posts, setPosts] = useState<any[]>([]);
+    const [posts, setPosts] = useState<Post[]>([]);
     const [content, setContent] = useState<string>('');
 
     useEffect(() => {
@@ -29,19 +41,9 @@ export default function Feed() {
 
     async function loadPost() {
         const response = await axios.get("http://localhost:3001/posts");
-        
-        // , {
-        //     params: {
-        //         _sort: "publishedAt",
-        //         _order: "desc"
-        //     }
-        // });
-        //setPosts(response.data)
-
         const postSort = response.data.sort((a: any, b: any) => (
             new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
         ))
-
         setPosts(postSort)
     }
 
@@ -82,15 +84,15 @@ export default function Feed() {
                 </aside>
                 <main className="main">
                     <form onSubmit={handleCreatePost} className="post">
-                        <TextAreaCustom 
-                        message={content} 
-                        setMessage={setContent} 
-                        title="Deixe um comentario"
+                        <TextAreaCustom
+                            message={content}
+                            setMessage={setContent}
+                            title="Deixe um comentario"
                         />
                         <ButtonCustom />
                     </form>
                     {posts.map(item => (
-                        <Post post={item} key={item.id} />
+                        <Post post={item} key={item.id} setPost={setPosts}/>
                     ))}
                 </main>
             </div>
