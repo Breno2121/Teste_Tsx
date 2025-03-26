@@ -11,6 +11,7 @@ import { FormEvent, useEffect, useState } from "react";
 import axios from "axios";
 import TextAreaCustom from "@/components/TextAreaCustom";
 import ButtonCustom from "@/components/ButtonCustom";
+import Comment from "@/components/Comment";
 
 type Post = {
     id: string;
@@ -26,6 +27,7 @@ type Author = {
 }
 type Comment = {
     id: string;
+    like: number;
     author: Author;
     comment: string;
     publisheAt: Date;
@@ -56,12 +58,12 @@ export default function Feed() {
             publishedAt: new Date().toISOString(),
             author: {
                 name: "Breno Silva",
-                role: "Front-end",
+                role: "Full-Stack Developer",
                 avatarUrl: "https://github.com/breno2121.png"
             }
-        }
+        };
+        await axios.post("http://localhost:3001/posts", post);
 
-        await axios.post("http://localhost:3001/posts", post)
         await loadPost();
         setContent('');
     }
@@ -83,16 +85,18 @@ export default function Feed() {
                     </div>
                 </aside>
                 <main className="main">
-                    <form onSubmit={handleCreatePost} className="post">
+                    <form onSubmit={handleCreatePost} className="form-post">
                         <TextAreaCustom
                             message={content}
                             setMessage={setContent}
-                            title="Deixe um comentario"
+                            title="O que você está pensando???"
                         />
+
                         <ButtonCustom />
                     </form>
+
                     {posts.map(item => (
-                        <Post post={item} key={item.id} setPost={setPosts}/>
+                        <Post post={item} key={item.id} setPost={setPosts} />
                     ))}
                 </main>
             </div>

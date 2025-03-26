@@ -2,12 +2,14 @@
 
 import { Dispatch, DispatchWithoutAction, FormEvent, SetStateAction, useState } from "react";
 import Avatar from "../Avatar";
+import { v4 as uuid } from "uuid";
 import "./Style.css";
 import { format, formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import axios from "axios";
 import TextAreaCustom from "../TextAreaCustom";
 import ButtonCustom from "../ButtonCustom";
+import Comment from "../Comment";
 
 type Author = {
     name: string;
@@ -23,6 +25,7 @@ type Post = {
 }
 type Comment = {
     id: string;
+    like: number;
     author: Author;
     comment: string;
     publisheAt: Date;
@@ -51,8 +54,10 @@ export default function Post({ post, setPost }: PostProps) {
         event.preventDefault();
 
         const comment = {
+            id: uuid(),
             comment: newComment,
             publishedAt: new Date().toISOString(),
+            like: 0,
             author: {
                 name: "Breninho",
                 role: "Desocupado",
@@ -68,6 +73,24 @@ export default function Post({ post, setPost }: PostProps) {
 
         loadPost();
         setNewComment('');
+    }
+
+    async function handleDeleteComment(event: MouseEvent, id: string) {
+        event.preventDefault();
+        
+        const commentsFilter = posts.comments.filter(comment => comment.id !== id);
+        await axios.patch(`http://localhost:3001/posts/${post.id}`), {
+            "comments": commentsFilter
+        }}
+    
+        async function handleLikeComment(event: MouseEvent) {
+        event.preventDefault();
+        
+            const commentUpdated = post.comments.map(comment => {
+                if(comment.id === id) {
+                    return (...comment, like: Comment.like + 1);
+                }
+            })
 
     }
 
@@ -107,11 +130,9 @@ export default function Post({ post, setPost }: PostProps) {
                 </footer>
             </form>
 
-            {post.comments?.length && post.comments.map(comment => (
-                // <comment key/>
+            {post.comments?.length && post.comments.map(item => (
+                < Comment key={item.id} comment={item} handleDelete={handleDeleteComment} handleLike={handleLikeComment} />
             ))}
-
         </article>
-
     )
 }

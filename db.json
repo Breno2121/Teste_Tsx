@@ -8,7 +8,7 @@
         "avatarUrl": "https://github.com/benedettmanu.png"
       },
       "publishedAt": "2025-03-18T12:00:00Z",
-      "content": "Hoje compartilhei algumas dicas sobre React no meu blog! Falei sobre como utilizar hooks personalizados para gerenciar estado de forma eficiente e evitar repetições de código. Também mencionei a importância da organização dos componentes e como utilizar o Context API para melhorar a comunicação entre eles. Confira o post completo no meu site!"
+      "content": "Hoje compartilhei algumas dicas sobre React no meu blog! Também mencionei a importância da organização dos componentes e como utilizar o Context API para melhorar a comunicação entre eles. Confira o post completo no meu site!"
     },
     {
       "id": "2",
@@ -18,25 +18,15 @@
         "avatarUrl": "https://github.com/niipvargas.png"
       },
       "publishedAt": "2025-03-16T10:15:00Z",
-      "content": "Design de interfaces pensando na acessibilidade é essencial! Recentemente, realizei uma pesquisa sobre como melhorar a experiência de navegação para pessoas com deficiência visual e auditiva. Implementamos melhorias como contraste adequado, suporte a leitores de tela e navegação por teclado. Pequenas mudanças podem fazer uma grande diferença na inclusão digital!"
+      "content": "Design de interfaces pensando na acessibilidade é !, navegação para pessoas com deficiência visual e auditiva. Implementamos melhorias como contraste adequado, suporte a leitores de tela e navegação por teclado. Pequenas mudanças podem fazer uma grande diferença na inclusão digital!"
     },
     {
       "id": "3",
-      "content": "fsdfds",
-      "publishedAt": "2025-03-25T21:54:27.879Z",
+      "content": "brenonhi",
+      "publishedAt": "2025-03-26T00:12:54.145Z",
       "author": {
         "name": "Breno Silva",
-        "role": "Front-end",
-        "avatarUrl": "https://github.com/breno2121.png"
-      }
-    },
-    {
-      "id": "4",
-      "content": "",
-      "publishedAt": "2025-03-25T21:55:02.814Z",
-      "author": {
-        "name": "Breno Silva",
-        "role": "Front-end",
+        "role": "Full-Stack Developer",
         "avatarUrl": "https://github.com/breno2121.png"
       }
     }

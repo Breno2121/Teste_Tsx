@@ -1,0 +1,73 @@
+.comment {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.comment-box {
+    flex: 1;
+}
+
+.comment-content {
+    background-color: #29292e;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.comment-content header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.comment-content header strong {
+    display: block;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.comment-content header time {
+    display: block;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #8d8d99;
+}
+
+.comment-content header footer {
+    background-color: transparent;
+    border: none;
+    color: #8d8d99;
+    line-height: 0;
+    cursor: pointer;
+}
+
+.comment-content header button:hover {
+    color: #f75a68;
+}
+
+.comment-content p {
+    margin-top: 16px;
+    color: #c4c4cc;
+}
+
+.comment-box footer button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: #8d8d99;
+}
+
+.comment-box footer button:hover {
+    color: #00875f;
+}
+
+.comment-box footer button svg {
+    margin-right: 8px;
+}
+
+.comment-box footer button span::before {
+    content: "\2022";
+}
