@@ -1,18 +1,18 @@
-import "./Style.css"
+import "./Style.css";
 
-type TextAreaProps = {
+type TextareaProps = {
     message: string;
     setMessage: (value: string) => void;
-    title: string;
+    title: string
 }
 
+export default function TextareaCustom({ message, setMessage, title }: TextareaProps) {
 
-export default function TextAreaCustom({message, setMessage, title}: TextAreaProps) {
     return (
-        <textarea placeholder={title}
+        <textarea
+            placeholder={title}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
         />
     )
 }
-

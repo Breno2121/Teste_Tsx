@@ -1,9 +1,8 @@
-import { RiDeleteBin6Line } from 'react-icons/ri'
-import Avatar from '../Avatar'
-import './style.css'
-import { PiThumbsUp } from 'react-icons/pi'
-import { ptBR } from 'date-fns/locale'
-import { formatDistanceToNow } from 'date-fns'
+import { formatDistanceToNow } from 'date-fns';
+import Avatar from '../Avatar';
+import './style.css';
+import { PiThumbsUp, PiTrash } from 'react-icons/pi';
+import { ptBR } from 'date-fns/locale';
 
 type Author = {
     name: string;
@@ -19,41 +18,35 @@ type CommentProps = {
         like: number;
         author: Author;
         comment: string;
-        publisheAt: Date;
+        publishedAt: Date
     }
 }
-
-export default function Comment({ comment }: CommentProps) {
-
-    const dateformat = formatDistanceToNow(comment.publisheAt, {
+export default function Comment({ comment, handleDelete, handleLike }: CommentProps) {
+    const dateFormat = formatDistanceToNow(comment.publishedAt, {
         locale: ptBR,
         addSuffix: true
     })
 
     return (
         <div className='comment'>
-            <Avatar src={"https://github.com/breno2121.png"} hasBorder={false} />
-
+            <Avatar src={comment.author.avatarUrl} hasBorder={false} />
             <div className='comment-box'>
-                <div className="comment-content">
+                <div className='comment-content'>
                     <header>
                         <div className='author-and-time'>
                             <strong>{comment.author.name}</strong>
-                            <time>{dateformat}</time>
+                            <time>{dateFormat}</time>
                         </div>
-
-                        <button title='deletar-comentario'>
-                            <RiDeleteBin6Line />
+                        <button title='Deletar comentário' onClick={(event) => handleDelete(event, comment.id)}>
+                            <PiTrash size={24} />
                         </button>
                     </header>
-
                     <p>{comment.comment}</p>
-
                 </div>
                 <footer>
-                    <button>
+                    <button onClick={(event) => handleLike(event, comment.id)}>
                         <PiThumbsUp />
-                        Aplaudir <span>{comment.like}</span>
+                        Apludir <span>{comment.like}</span>
                     </button>
                 </footer>
             </div>

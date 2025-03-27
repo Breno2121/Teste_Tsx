@@ -8,7 +8,8 @@
         "avatarUrl": "https://github.com/benedettmanu.png"
       },
       "publishedAt": "2025-03-18T12:00:00Z",
-      "content": "Hoje compartilhei algumas dicas sobre React no meu blog! Também mencionei a importância da organização dos componentes e como utilizar o Context API para melhorar a comunicação entre eles. Confira o post completo no meu site!"
+      "content": "Hoje compartilhei algumas dicas sobre React no meu blog! Também mencionei a importância da organização dos componentes e como utilizar o Context API para melhorar a comunicação entre eles. Confira o post completo no meu site!",
+      "comments": []
     },
     {
       "id": "2",
@@ -18,7 +19,8 @@
         "avatarUrl": "https://github.com/niipvargas.png"
       },
       "publishedAt": "2025-03-16T10:15:00Z",
-      "content": "Design de interfaces pensando na acessibilidade é !, navegação para pessoas com deficiência visual e auditiva. Implementamos melhorias como contraste adequado, suporte a leitores de tela e navegação por teclado. Pequenas mudanças podem fazer uma grande diferença na inclusão digital!"
+      "content": "Design de interfaces pensando na acessibilidade é !, navegação para pessoas com deficiência visual e auditiva. Implementamos melhorias como contraste adequado, suporte a leitores de tela e navegação por teclado. Pequenas mudanças podem fazer uma grande diferença na inclusão digital!",
+      "comments": []
     },
     {
       "id": "3",
@@ -29,6 +31,75 @@
         "role": "Full-Stack Developer",
         "avatarUrl": "https://github.com/breno2121.png"
       }
+    },
+    {
+      "id": "4",
+      "content": "fdgfdgdf",
+      "publishedAt": "2025-03-26T21:54:02.521Z",
+      "author": {
+        "name": "Breno Silva",
+        "role": "Full-Stack Developer",
+        "avatarUrl": "https://github.com/breno2121.png"
+      },
+      "comments": [
+        {
+          "id": "61f7387f-6397-4ac7-ae11-a0ed5b53aa40",
+          "comment": "dfsd",
+          "publishedAt": "2025-03-27T21:55:00.479Z",
+          "like": 0,
+          "author": {
+            "name": "Breno Silva",
+            "role": "Full-stack",
+            "avatarUrl": "http://github.com/breno2121.png"
+          }
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "content": "dfgfdg",
+      "publishedAt": "2025-03-26T21:54:04.680Z",
+      "author": {
+        "name": "Breno Silva",
+        "role": "Full-Stack Developer",
+        "avatarUrl": "https://github.com/breno2121.png"
+      },
+      "comments": [
+        {
+          "id": "b7990c7e-65b9-4c2a-9584-968fcc6aafbd",
+          "comment": "dfsd",
+          "publishedAt": "2025-03-27T21:55:07.607Z",
+          "like": 1,
+          "author": {
+            "name": "Breno Silva",
+            "role": "Full-stack",
+            "avatarUrl": "http://github.com/breno2121.png"
+          }
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "content": "",
+      "publishedAt": "2025-03-27T21:58:08.912Z",
+      "author": {
+        "name": "Gustavo Souza",
+        "role": "Full-Stack Developer",
+        "avatarUrl": "https://github.com/breno2121.png"
+      },
+      "comments": [
+        {
+          "id": "4f8c8567-a442-4ba7-9ab5-e8161628b1a7",
+          "comment": "dsfsd",
+          "publishedAt": "2025-03-27T21:58:11.551Z",
+          "like": 0,
+          "author": {
+            "name": "Breno Silva",
+            "role": "Full-stack",
+            "avatarUrl": "http://github.com/breno2121.png"
+          }
+        }
+      ]
     }
   ]
 }
