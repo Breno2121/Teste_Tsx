@@ -38,7 +38,8 @@ export default function Comment({ comment, handleDelete, handleLike }: CommentPr
                             <time>{dateFormat}</time>
                         </div>
                         <button title='Deletar comentário' onClick={(event) => handleDelete(event, comment.id)}>
-                            <PiTrash size={24} />
+                            <PiTrash size={24}
+                            data-testid="deletar"/>
                         </button>
                     </header>
                     <p>{comment.comment}</p>

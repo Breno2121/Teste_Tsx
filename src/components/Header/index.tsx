@@ -5,7 +5,7 @@ import './Style.css'
 export default function Header() {
     return (
         <header className="header">
-            <Image src={logo} alt="Logo" />
+            <Image src={logo} alt='Logo' />
         <h1>Feed</h1>
         </header>
     )

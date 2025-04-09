@@ -4,7 +4,7 @@ import ButtonCustom from '.';
 
 describe('Test Button Custom', () => {
     it('Deve renderizar o componente Button Custom', () => {
-        render(<ButtonCustom />)
+        render(<ButtonCustom handle={() => {}} />)
 
         const button = screen.getByText("Publicar")
     })
