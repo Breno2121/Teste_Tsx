@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import axios from 'axios';
 import Feed from './page';
 
@@ -49,5 +49,28 @@ describe('Page feed', () => {
         expect(posts.length).toBe(2);
         expect(posts[0]).toHaveTextContent('Post 2')
         expect(posts[1]).toHaveTextContent('Post 1')
+
+
+        const textarea = screen.getByPlaceholderText("O que você está pensando???");
+        expect(textarea).toBeInTheDocument();
+
+        fireEvent.change(textarea, { target: { value: "Meu Novo Post" } })
+        expect(textarea).toHaveValue("Meu Novo Post");
+
+        const button = screen.getByText("Publicar-post");
+        expect(button).toBeInTheDocument();
+
+        fireEvent.click(button);
+
+        await waitFor(() => {
+            expect(mockAxios.post).toHaveBeenCalledWith("http://localhost:3001/posts",
+                expect.objectContaining({
+                    content: 'Meu Novo Post'
+                })
+            )
+            expect(textarea).toHaveValue("")
+        })
+
+    
     })
 });

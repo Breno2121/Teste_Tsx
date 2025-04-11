@@ -83,7 +83,6 @@ export default function Post({ post, setPost }: PostProps) {
         await axios.patch(`http://localhost:3001/posts/${post.id}`, {
             "comments": comentsFilter
         })
-        
         loadPost();
     }
 

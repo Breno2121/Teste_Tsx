@@ -8,7 +8,7 @@ type ButtonCustomProps = {
 export default function ButtonCustom({text, handle}: ButtonCustomProps) {
     return (
         <button type="submit" className="button-custom" onClick={handle}>
-            Publicar
+            {text ? text : 'Publicar'}
         </button>
     )
 }

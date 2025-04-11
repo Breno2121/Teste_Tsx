@@ -102,7 +102,7 @@ export default function Feed() {
                             setMessage={setContent}
                             title="O que você está pensando???"
                         />
-                        <ButtonCustom text="Publicar" handle={() => { }} />
+                        <ButtonCustom text="Publicar-post" handle={() => { }} />
                     </form>
 
                     {isLoading ? (
@@ -112,6 +112,7 @@ export default function Feed() {
                             <Post post={item} key={item.id} setPost={setPosts} />
                         ))
                     )}
+
                 </main>
             </div>
         </div>
